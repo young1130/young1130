@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="movielike">
+
+
+	
+	<insert id="addLike" parameterType="mlvo">
+	insert into movieLike VALUES (movieLike_seq.nextVal,#{lid},#{mno})
+	</insert>
+	
+	<delete id="delLike" parameterType="mlvo">
+	delete from movieLike where lid=#{lid} and mno=#{mno}
+	</delete>
+	
+	<select id="likeCnt" parameterType="mlvo" resultType="int">
+	select count(mlno) as likecnt from movielike where mno=#{mno}
+	</select>
+	
+		<select id="mylikeCnt" parameterType="mlvo" resultType="int"> <!-- 좋아요가 있는 지 없는 지 확인 -->
+	select count(mlno) as mylikecnt from movielike where mno=#{mno} and lid=#{lid}
+	</select>
+</mapper>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypagep">
+   
+   <!-- 순서 1번  -->
+    <!-- 영화 예매 내역 시작     
+    
+    <select id="moviep" parameterType="String" resultMap="movieupresult">
+       select rownum,mu.mimg, mu.mname, mu.mstartday, mb.mbdate, mb.mstarttime 
+      from movieup mu, moviebuy mb where mu.mno = mb.mno and lid=#{lid}
+    </select>-->
+    
+   <!-- 구매내역 페이징-->
+      <select id="pageCount" resultType="int" parameterType="String">
+      select count(*) from movieup mu, moviebuy mb where mu.mno = mb.mno and lid=#{lid}      
+   </select>
+   
+     <!-- 예매내역 페이징 -->
+   <select id="mvpage" parameterType="pgSvo" resultMap="movieupresult">
+   select rnum, mimg,mname,mstartday,mbdate,mstarttime from (select rownum rnum, a.*from
+   ( select mu.mimg, mu.mname, mu.mstartday, mb.mbdate, mb.mstarttime from movieup mu, moviebuy mb where mu.mno = mb.mno and lid=#{lid} 
+   order by mbdate desc)a ) where rnum BETWEEN #{begin} and #{end}
+   </select>
+   
+   <!-- 순서 2번  -->
+   <!-- result map 시작 -->
+   <resultMap type="muvo" id="movieupresult">
+   <result property="rownum" column="rnum" />
+   <result property="mimg" column="mimg"/>
+   <result property="mname" column="mname"/>
+   <result property="mstartday" column="mstartday"/>
+   
+   <collection property="moviebuy" javaType="java.util.List" 
+   resultMap="moviebuyresult" ofType="mbvo">
+   </collection>
+   </resultMap>   
+    <!-- result map 끝 -->   
+    
+    <!-- 순서 3번  -->
+    <!--collection mapping 시작 -->   
+    <resultMap type="mbvo" id="moviebuyresult">
+    <result property="mbdate" column="mbdate"/>
+    <result property="mstarttime" column="mstarttime"/>
+    </resultMap>
+    <!--collection mapping 끝 -->
+    
+    <!-- 영화 예매 내역 끝 -->   
+ 
+ 
+<!-- 스낵 쿼리 시작 -->
+<select id="snpage" parameterType="pgSvo" resultMap="snackvoresult">
+   select rnum, lid,popimg,popname,sbdate,snacksaram,poppay from (select rownum rnum, a.*from
+   ( select sb.lid, s.popimg, sb.popname, sb.sbdate, sb.snacksaram, s.poppay from snackbuy sb, snack s where sb.popname=s.popname and sb.lid='4'
+   order by sbdate desc) a ) where rnum BETWEEN #{begin} and #{end}
+</select>  
+
+
+<!-- result map 시작 -->
+<resultMap type="snackvo" id="snackvoresult">
+<result property="rownum" column="rnum"/>
+<result property="popimg" column="popimg" />
+<result property="poppay" column="poppay"/>
+
+<collection property="snackbuy" javaType="java.util.List"
+resultMap="snackbuyvoresult" ofType="sbuyvo">
+</collection>
+</resultMap>
+<!-- result map 끝 -->
+
+<!-- collection mapping 시작-->
+<resultMap type="sbuyvo" id="snackbuyvoresult">
+<result property="lid" column="lid"/>
+<result property="popname" column="popname"/>
+<result property="sbdate" column="sbdate"/>
+<result property="snacksaram" column="snacksaram"/>
+</resultMap>
+<!-- collection mapping 끝-->
+
+<!-- 스낵 쿼리 끝 -->
+
+
+<!-- Q&A 쿼리 시작 
+<select id="qnap" parameterType="String" resultMap="mvoresult">
+select rownum,qd.subject, qd.content, qd.mdate from qaboard qd, login lg
+where qd.writer = lg.lid and writer=#{writer}
+</select> -->
+
+     <!-- qna내역 페이징 -->
+   <select id="qnapage" parameterType="pgSvo" resultMap="mvoresult">
+   select rnum, writer, subject,content,mdate from (select rownum rnum, a.*from
+   ( select qd.subject, qd.content, qd.mdate, qd.writer from qaboard qd, login lg where qd.writer = lg.lid and lid=#{lid} 
+      order by mdate desc)a ) where rnum BETWEEN #{begin} and #{end}
+   </select>
+
+<!-- result map 시작 -->
+<resultMap type="mvo" id="mvoresult">
+<result property="rownum" column="rnum"/>
+<collection property="qnaboard" javaType="java.util.List"
+resultMap="qvoresult" ofType="qvo"/>
+</resultMap>
+<!-- result map 끝 -->
+
+<!-- collection mapping 시작-->
+<resultMap type="qvo" id="qvoresult">
+<result property="subject" column="subject"/>
+<result property="content" column="content"/>
+<result property="mdate" column="mdate"/>
+</resultMap>
+<!-- collection mapping 끝-->
+
+<!-- Q&A 쿼리 끝 -->
+    
+</mapper>
