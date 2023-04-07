@@ -1,17 +1,16 @@
-### Hi there 👋
+### 👋 web developer 👏
 
-<!--
-**young1130/young1130** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white"/> 
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/> 
+<img src="https://img.shields.io/badge/jss-ED2761?style=flat&logo=jss&logoColor=white"/> 
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white"/> 
+<img src="https://img.shields.io/badge/spring-6DB33F?style=flat&logo=spring&logoColor=white"/> 
+<img src="https://img.shields.io/badge/springboot-6DB33F?style=flat&logo=springboot&logoColor=white"/> 
+<img src="https://img.shields.io/badge/jquery-0769AD?style=flat&logo=jquery&logoColor=white"/> 
+<img src="https://img.shields.io/badge/css3-1572B6?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/json-000000?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/django-092E20?style=flat&logo=React&logoColor=white"/> 
 
-Here are some ideas to get you started:
+<img src="https://img.shields.io/badge/microsoftpowerpoint-B7472A?style=flat&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/microsoftexcel-217346?style=flat&logo=React&logoColor=white"/> 
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jhe226&layout=compact)](https://github.com/young1130/github-readme-stats)
+
+
+
